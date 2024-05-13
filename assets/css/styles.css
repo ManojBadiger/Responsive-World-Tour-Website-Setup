@@ -1,0 +1,291 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --title-color: hsl(0, 0%, 100%);
+  --text-color: #c46454;
+  --body-color: #f8e4ad;
+  --icon-background-color: #ed9600e0;
+  --line-color: #c45c5c;
+  --footer-text-color: #d95d38;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --biggest-font-size: 2rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1152px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.main {
+  overflow: hidden;
+  /* For animation */
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  width: 100%;
+  top: 35px;
+  left: 0;
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo,
+.nav__toggle,
+.nav__close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__logo {
+  color: var(--text-color);
+  column-gap: .5rem;
+  width: 30%;
+  font-weight: var(--font-semi-bold);
+}
+
+.nav__logo i {
+  font-size: 1.25rem;
+  font-weight: initial;
+}
+
+.nav__toggle,
+.nav__close {
+  background-color: var(--icon-background-color);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+
+/* Navigation for mobile devices */
+
+@media screen and (max-width: 1023px) {
+  .nav__menu {
+    position: fixed;
+    top: -63%;
+    right: -100%;
+    bottom: 40px;
+    background-color: var(--body-color);
+    width: 80%;
+    height: 1000px;
+    box-shadow: 0 0 16px hsla(0, 0%, 40%, 0.2);
+    padding: 7rem 4rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    transition: right .4s;
+  }
+}
+
+/* Navigation */
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+}
+
+.nav__link {
+  columns: var(--text-color);
+  font-weight: var(--font-semi-bold);
+  transition: color .4s;
+  color: var(--text-color);
+}
+
+.nav__link:hover {
+  color: var(--title-color);
+}
+
+.nav__button {
+  display: inline-block;
+  width: max-content;
+  background-color: var(--body-color);
+  border: 2px solid var(--text-color);
+  padding: 1rem 3rem;
+  border-radius: 4rem;
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.nav__close {
+  position: absolute;
+  top: .75rem;
+  right: 1.5rem;
+}
+
+/* Show menu */
+.show-menu {
+  right: 0;
+}
+
+/*=============== HOME ===============*/
+.home {
+  position: relative;
+  height: 100vh;
+}
+
+.home__container {
+  padding-top: 7rem;
+  display: grid;
+  row-gap: 3rem;
+}
+
+.home__content {
+  text-align: center;
+}
+
+.home__subtitle {
+  font-size: var(--small-font-size);
+  margin-bottom: .5rem;
+  position: relative;
+  right: 20px;
+  letter-spacing: 1px;
+}
+
+.home__title {
+  position: relative;
+  width: max-content;
+  margin: 0 auto .75rem;
+  font-size: var(--biggest-font-size);
+  color: var(--title-color);
+}
+
+.home__title img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.home__title span {
+  position: relative;
+  z-index: 5;
+}
+
+.home__description {
+  line-height: 150%;
+  margin-bottom: 1.25rem;
+}
+
+.home__button {
+  display: inline-block;
+  background: linear-gradient(180deg,
+      var(--second-color),
+      var(--second-color-alt));
+  padding: 1.125rem 3rem;
+  border-radius: 4rem;
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  box-shadow: 0 8px 32px hsla(268, 58%, 4%, .3),
+    inset 0 4px 8px hsl(0, 0%, 100%, .4);
+}
+
+
+.home__container {
+  position: relative;
+}
+
+.home__cloud-1 {
+  position: absolute;
+  top: 18.2%;
+  left: 10%;
+}
+
+.home__cloud-2 {
+  position: absolute;
+  right: 10%;
+  z-index: 1;
+}
+
+.home__cloud-3 {
+  position: absolute;
+  top: 26%;
+  right: 100%;
+}
+
+.home__cloud-4 {
+  position: absolute;
+  top: 26%;
+  left: 100%;
+  width: 55%;
+}
+
+.sun {
+  position: absolute;
+  bottom: 99%;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/*=============== BREAKPOINTS ===============*/
